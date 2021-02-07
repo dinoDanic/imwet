@@ -1,0 +1,37 @@
+.today-bar {
+  background: #1c294e;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+.weather-icon {
+  margin: 2rem 0 0 0;
+}
+.today-date {
+  margin-top: 1rem;
+}
+.current-temperature {
+  margin: 2rem 0 0 0;
+  span {
+    font-size: 1.5rem;
+  }
+}
+.country {
+  margin-top: 0rem;
+}
+.other-info-wrap {
+  width: 100%;
+  margin: 4rem 0 0 0;
+}
+.other-info {
+  margin: 0.5rem 10% 0 10%;
+  width: 80%;
+  text-align: start;
+  display: flex;
+  justify-content: space-between;
+  p:last-child {
+    color: rgb(204, 204, 204);
+  }
+}

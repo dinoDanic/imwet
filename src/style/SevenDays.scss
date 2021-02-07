@@ -1,0 +1,53 @@
+.seven-wraper {
+  margin: 3rem 0rem 0 1rem;
+}
+.day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 1rem 0 0 0;
+}
+.drop {
+  display: flex;
+  justify-content: center;
+  img {
+    margin-right: 7px;
+    width: 7px;
+    height: 11px;
+  }
+  p {
+    color: #333;
+  }
+}
+.weather-icon-days {
+  img {
+    width: 26px;
+    height: 26px;
+  }
+}
+.progress-bar {
+  width: 30%;
+  border-radius: 3rem;
+  position: relative;
+  margin-top: -15px;
+}
+.bar1,
+.bar2 {
+  width: 100%;
+  background: white;
+  border-radius: 3rem;
+  height: 5px;
+  position: absolute;
+  text-align: right;
+  p {
+    color: #333;
+    margin: 5px;
+    font-weight: 300;
+  }
+}
+.bar2 {
+  background: #7c93d2;
+  width: 50%;
+  text-align: left;
+}
