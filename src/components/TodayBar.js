@@ -21,7 +21,7 @@ const TodayBar = ({ currentWeather, currentCountry }) => {
             <p>{currentWeather.current.condition.text}</p>
           </div>
           <div className="today-date">
-            <h2>Today</h2>
+            <h2>TodayLOL</h2>
             <p>{date}</p>
           </div>
 
