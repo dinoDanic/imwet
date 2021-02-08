@@ -15,13 +15,45 @@ import Hour from "../components/Hour";
 const Home = () => {
   const [currentCountry, setCurrentCountry] = useState("Sveti Ivan Zelina");
   const [currentWeather, setCurrentWeather] = useState(null);
+  const [currentLocalTime, setCurrentLocalTime] = useState("");
+
+  //functions
+  const goToHandler = () => {
+    console.log(currentLocalTime);
+    const boxs = document.querySelectorAll(".hour-time");
+    let current = new Date();
+    boxs.forEach((data) => {
+      let hour = current.getHours();
+      if (hour < 10) {
+        hour = "0" + hour;
+      }
+      if (data.innerText === `${hour}`) {
+        setTimeout(() => {
+          data.style.color = "#94B2FF";
+          data.innerText = "Current";
+          data.style.fontWeight = "800";
+          data.parentNode.firstChild.style.border = "2px solid #94B2FF";
+          data.parentNode.firstChild.classList.add("goto");
+          data.parentNode.firstChild.scrollIntoView({
+            behavior: "smooth",
+            inline: "start",
+          });
+        }, 1000);
+      } else {
+        data.parentNode.firstChild.classList.remove("goto");
+      }
+    });
+  };
   useEffect(() => {
     axios
       .get(
-        `http://api.weatherapi.com/v1/forecast.json?key=28618711c84f44adbf1202156210602&q=${currentCountry}&days=7`
+        `https://api.weatherapi.com/v1/forecast.json?key=28618711c84f44adbf1202156210602&q=${currentCountry}&days=7`
       )
       .then((data) => {
         setCurrentWeather(data.data);
+        let getTime = data.data.location.localtime;
+        setCurrentLocalTime(data.data.location.localtime.slice(0, 0.2));
+        goToHandler();
       })
       .catch((err) => {
         console.log(err);

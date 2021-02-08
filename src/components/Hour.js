@@ -2,10 +2,6 @@ import React from "react";
 import "../style/Hour.scss";
 
 const Hour = ({ currentWeather, currentCountry }) => {
-  const rainBar = (hour) => {
-    document.querySelector(".box-rain");
-    rainBar.style.top = "20%";
-  };
   return (
     <>
       {currentWeather && (
@@ -13,17 +9,24 @@ const Hour = ({ currentWeather, currentCountry }) => {
           {console.log(currentWeather.forecast.forecastday[0].hour)}
           {currentWeather.forecast.forecastday[0].hour.map((hour) => {
             return (
-              <div className="hour-box" key={hour.time_epoch}>
-                <div
-                  className="box-rain"
-                  style={{ bottom: `${hour.chance_of_rain}%` }}
-                ></div>
-                <div className="box-info">
-                  <p>{hour.time.replace("2021-02-07", "")}</p>
-                  <img src={hour.condition.icon} alt="" width="40px" />
-                  <p className="p-rain">{hour.chance_of_rain}%</p>
-                  <p>{Math.round(hour.temp_c)}°c</p>
+              <div className="box-wrap" key={hour.time_epoch}>
+                <div className="hour-box">
+                  <div
+                    className="box-rain"
+                    style={{ bottom: `${hour.chance_of_rain}%` }}
+                  ></div>
+                  <div className="box-info">
+                    <img
+                      className="img-weater"
+                      src={hour.condition.icon}
+                      alt=""
+                      width="30px"
+                    />
+                    <p>{Math.round(hour.temp_c)}°c</p>
+                    <p className="p-rain">{hour.chance_of_rain}%</p>
+                  </div>
                 </div>
+                <p className="hour-time">{hour.time.slice(10, -3)}</p>
               </div>
             );
           })}
