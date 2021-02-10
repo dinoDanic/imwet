@@ -1,9 +1,10 @@
 .seven-wraper {
-  margin: 2rem 0rem 0 0rem;
+  margin: 1rem 0rem 0 0rem;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 30px;
   box-shadow: 0px 0px 20px rgb(0 0 0 / 5%);
   padding: 2rem 2rem;
+  height: 100%;
   h4 {
     margin: 0rem 0 0 0.5rem;
   }
@@ -23,9 +24,6 @@
     width: 7px;
     height: 11px;
   }
-  p {
-    color: #666;
-  }
 }
 .weather-icon-days {
   img {
@@ -34,20 +32,14 @@
   }
 }
 .progress-bar {
-  width: 35%;
+  width: 40%;
   display: flex;
-  align-content: center;
-  justify-content: center;
-  p {
-    color: #666;
-    margin: 5px;
-    font-weight: 300;
-  }
+  align-items: center;
 }
 .bars {
   position: relative;
   width: 100%;
-  margin-top: 10px;
+  margin-top: -2px;
 }
 .bar1,
 .bar2 {
@@ -61,4 +53,8 @@
 .bar2 {
   background: #94b2ff;
   width: 0%;
+}
+.p-w-left,
+.p-w-right {
+  min-width: 50px;
 }

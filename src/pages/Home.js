@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { TweenMax, Power3 } from "gsap";
 //Images
 //Style
 import "../style/Home.scss";
@@ -10,12 +11,14 @@ import CountryBar from "../components/CountryBar";
 import SevenDays from "../components/SevenDays";
 import Empty from "../components/Empty";
 import Hour from "../components/Hour";
+import MoreInfo from "../components/MoreInfo";
 //API
 
 const Home = () => {
   const [currentCountry, setCurrentCountry] = useState("Sveti Ivan Zelina");
   const [currentWeather, setCurrentWeather] = useState(null);
   const [currentLocalTime, setCurrentLocalTime] = useState("");
+  let wraperRef = useRef();
 
   //functions
   const goToHandler = () => {
@@ -29,21 +32,22 @@ const Home = () => {
       }
       if (data.innerText === `${hour}`) {
         setTimeout(() => {
-          data.style.color = "#94B2FF";
+          data.classList.add("hour-time-a");
           data.innerText = "Current";
-          data.style.fontWeight = "800";
-          data.parentNode.firstChild.style.border = "2px solid #94B2FF";
           data.parentNode.firstChild.classList.add("goto");
           data.parentNode.firstChild.scrollIntoView({
             behavior: "smooth",
             inline: "start",
+            block: "start",
           });
         }, 1000);
       } else {
+        data.classList.remove("hour-time-a");
         data.parentNode.firstChild.classList.remove("goto");
       }
     });
   };
+  //Use effect AXIO
   useEffect(() => {
     axios
       .get(
@@ -59,9 +63,22 @@ const Home = () => {
         console.log(err);
       });
   }, [currentCountry]);
+  //Use effect GSAP
+  useEffect(() => {
+    TweenMax.to(wraperRef, {
+      opacity: 1,
+      duration: 3,
+      stagger: 0.2,
+    });
+  }, []);
   return (
     <div className="main-wraper">
-      <div className="wraper">
+      <div
+        className="wraper"
+        ref={(el) => {
+          wraperRef = el;
+        }}
+      >
         <div className="section section1">
           <TodayBar
             currentWeather={currentWeather}
@@ -78,6 +95,7 @@ const Home = () => {
             currentWeather={currentWeather}
             currentCountry={currentCountry}
           />
+          {/*           <MoreInfo /> */}
           <Hour
             currentWeather={currentWeather}
             currentCountry={currentCountry}

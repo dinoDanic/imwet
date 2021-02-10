@@ -5,6 +5,10 @@
   position: absolute;
   border-radius: 30px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  p {
+    color: white;
+  }
 }
 .weather-icon {
   margin: 2rem 0 0 0;
@@ -34,4 +38,22 @@
   p:last-child {
     color: rgb(204, 204, 204);
   }
+}
+.cloud1,
+.cloud2,
+.cloud3 {
+  position: absolute;
+}
+.cloud1 {
+  left: -50%;
+  top: 5%;
+  opacity: 0;
+}
+.cloud2 {
+  top: 20%;
+  left: -50%;
+}
+.cloud3 {
+  top: 50%;
+  left: 100%;
 }

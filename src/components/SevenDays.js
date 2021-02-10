@@ -26,7 +26,9 @@ const SevenDays = ({ currentWeather, currentCountry }) => {
                   <img src={forecast.day.condition.icon} alt="" />
                 </div>
                 <div className="progress-bar">
-                  <p>{Math.round(forecast.day.mintemp_c)}°c</p>
+                  <p className="p-w-left">
+                    {Math.round(forecast.day.mintemp_c)}°c
+                  </p>
                   <div className="bars">
                     <div className="bar1"></div>
                     <div
@@ -34,11 +36,14 @@ const SevenDays = ({ currentWeather, currentCountry }) => {
                       style={{ width: `${forecast.day.avgtemp_c * 3}%` }}
                     ></div>
                   </div>
-                  <p>{Math.round(forecast.day.maxtemp_c)}°c</p>
+                  <p className="p-w-right">
+                    {Math.round(forecast.day.maxtemp_c)}°c
+                  </p>
                 </div>
               </div>
             );
           })}
+          <hr />
         </div>
       )}
     </>

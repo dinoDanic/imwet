@@ -2,7 +2,7 @@
   display: flex;
   width: 90%;
   margin-left: 5%;
-  padding: 2rem 0;
+  padding: 1.5rem 0rem 6.4rem 0rem;
   overflow-x: scroll;
   transition: 0.5s ease all;
   &::-webkit-scrollbar {
@@ -10,21 +10,21 @@
     height: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #94b2ff;
+    background: #94b2ffab;
     border-radius: 1rem;
   }
   &::-webkit-scrollbar {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 1rem;
   }
 }
 .box-wrap {
   p {
-    color: #666;
     text-align: center;
   }
 }
-.hour-time {
+.hour-time,
+.hour-time2 {
   margin: 0.5rem 1rem 0 0;
   font-weight: 500;
 }
@@ -37,15 +37,18 @@
   background: white;
   border-radius: 1.5rem;
   position: relative;
+  transition: 0.3s ease all;
+  img {
+    filter: blur(0.5px);
+  }
 }
 .box-rain {
   width: 100%;
   height: 100%;
   position: absolute;
   background: #e6f6ff;
+  transition: 1s ease all;
   margin-bottom: -210%;
-  /*   border-top: 0.5px solid #d7eefc; */
-
   left: 0;
   z-index: 10;
 }
@@ -67,4 +70,26 @@
   .p-rain {
     color: #7c93d2;
   }
+}
+.tomorrow-hold {
+  position: relative;
+}
+.tomorrow-line {
+  background: white;
+  width: 5px;
+  height: 185%;
+  margin: 0 1rem 0 0;
+  border-radius: 2rem;
+}
+.tomorrow-text {
+  position: absolute;
+  top: -20px;
+  left: 25px;
+}
+.hour-time-a {
+  color: #94b2ff !important;
+  font-weight: 800 !important;
+}
+.goto {
+  border: 2px solid #94b2ff;
 }

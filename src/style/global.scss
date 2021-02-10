@@ -25,7 +25,14 @@ h4 {
   color: #333;
 }
 p {
-  color: white;
+  color: #999;
   font-size: 0.7rem;
   font-weight: 300;
+}
+hr {
+  height: 1px;
+  background-color: rgb(226, 226, 226);
+  margin: 2rem 0;
+  width: 100%;
+  border: none;
 }
