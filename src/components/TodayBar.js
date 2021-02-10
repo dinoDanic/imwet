@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useElementScroll } from "framer-motion";
 import { TweenMax, Power3 } from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 //Images
 import sunCloud from "../img/sun-cloud.png";
 import { useHistory } from "react-router-dom";
@@ -44,86 +45,88 @@ const TodayBar = ({ currentWeather, currentCountry }) => {
   }, []);
 
   return (
-    <div
-      className="today-bar"
-      ref={(el) => {
-        todayBar = el;
-      }}
-    >
+    <>
       <div
-        className="cloud1"
+        className="today-bar"
         ref={(el) => {
-          cloud1 = el;
+          todayBar = el;
         }}
       >
-        <img src={cloud1img} alt="" />
-      </div>
-      <div className="cloud2">
-        <img
-          src={cloud2img}
-          alt=""
-          width="110px"
+        <div
+          className="cloud1"
           ref={(el) => {
-            cloud2 = el;
+            cloud1 = el;
           }}
-        />
-      </div>
-      <div className="cloud3">
-        <img
-          src={cloud3img}
-          alt=""
-          ref={(el) => {
-            cloud3 = el;
-          }}
-        />
-      </div>
-      {currentWeather && (
-        <>
-          <div className="weather-icon">
-            <img
-              src={currentWeather.current.condition.icon}
-              alt="{currentWeather.current.condition.icon}"
-            />
-            <p>{currentWeather.current.condition.text}</p>
-          </div>
-          <div className="today-date">
-            <h2>Today</h2>
-            <p>{date}</p>
-          </div>
+        >
+          <img src={cloud1img} alt="" />
+        </div>
+        <div className="cloud2">
+          <img
+            src={cloud2img}
+            alt=""
+            width="110px"
+            ref={(el) => {
+              cloud2 = el;
+            }}
+          />
+        </div>
+        <div className="cloud3">
+          <img
+            src={cloud3img}
+            alt=""
+            ref={(el) => {
+              cloud3 = el;
+            }}
+          />
+        </div>
+        {currentWeather && (
+          <>
+            <div className="weather-icon">
+              <img
+                src={currentWeather.current.condition.icon}
+                alt="{currentWeather.current.condition.icon}"
+              />
+              <p>{currentWeather.current.condition.text}</p>
+            </div>
+            <div className="today-date">
+              <h2>Today</h2>
+              <p>{date}</p>
+            </div>
 
-          <div className="current-temperature">
-            <h1>
-              {Math.round(currentWeather.current.temp_c)}
-              <span>°c</span>
-            </h1>
-          </div>
-          <div className="country">
-            <p>
-              {currentWeather.location.name}, <br />
-              {currentWeather.location.country}
-            </p>
-          </div>
-          <div className="other-info-wrap">
-            <div className="other-info">
-              <p>Feels like:</p>
-              <p>{currentWeather.current.feelslike_c} °c</p>
+            <div className="current-temperature">
+              <h1>
+                {Math.round(currentWeather.current.temp_c)}
+                <span>°c</span>
+              </h1>
             </div>
-            <div className="other-info">
-              <p>Wind:</p>
-              <p>{currentWeather.current.wind_kph} kph</p>
+            <div className="country">
+              <p>
+                {currentWeather.location.name}, <br />
+                {currentWeather.location.country}
+              </p>
             </div>
-            <div className="other-info">
-              <p>UV:</p>
-              <p>{currentWeather.current.uv}</p>
+            <div className="other-info-wrap">
+              <div className="other-info">
+                <p>Feels like:</p>
+                <p>{currentWeather.current.feelslike_c} °c</p>
+              </div>
+              <div className="other-info">
+                <p>Wind:</p>
+                <p>{currentWeather.current.wind_kph} kph</p>
+              </div>
+              <div className="other-info">
+                <p>UV:</p>
+                <p>{currentWeather.current.uv}</p>
+              </div>
+              <div className="other-info">
+                <p>Gust:</p>
+                <p>{currentWeather.current.gust_kph} kph</p>
+              </div>
             </div>
-            <div className="other-info">
-              <p>Gust:</p>
-              <p>{currentWeather.current.gust_kph} kph</p>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

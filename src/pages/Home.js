@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { TweenMax, Power3 } from "gsap";
+import { TweenMax, Power3, gsap } from "gsap";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 //Images
 //Style
 import "../style/Home.scss";
@@ -12,17 +13,18 @@ import SevenDays from "../components/SevenDays";
 import Empty from "../components/Empty";
 import Hour from "../components/Hour";
 import MoreInfo from "../components/MoreInfo";
+import WeatherAnimations from "../components/WeatherAnimations";
 //API
 
 const Home = () => {
   const [currentCountry, setCurrentCountry] = useState("Sveti Ivan Zelina");
   const [currentWeather, setCurrentWeather] = useState(null);
-  const [currentLocalTime, setCurrentLocalTime] = useState("");
+  const [currentWind, setCurrentWind] = useState(0);
+
   let wraperRef = useRef();
 
   //functions
   const goToHandler = () => {
-    console.log(currentLocalTime);
     const boxs = document.querySelectorAll(".hour-time");
     let current = new Date();
     boxs.forEach((data) => {
@@ -55,8 +57,7 @@ const Home = () => {
       )
       .then((data) => {
         setCurrentWeather(data.data);
-        let getTime = data.data.location.localtime;
-        setCurrentLocalTime(data.data.location.localtime.slice(0, 0.2));
+        setCurrentWind(data.data.current.wind_kph);
         goToHandler();
       })
       .catch((err) => {
@@ -79,6 +80,7 @@ const Home = () => {
           wraperRef = el;
         }}
       >
+        <WeatherAnimations currentWind={currentWind} />
         <div className="section section1">
           <TodayBar
             currentWeather={currentWeather}
