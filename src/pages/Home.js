@@ -18,10 +18,8 @@ import WeatherAnimations from "../components/WeatherAnimations";
 
 const Home = () => {
   const [currentCountry, setCurrentCountry] = useState("Sveti Ivan Zelina");
-  const [currentWeather, setCurrentWeather] = useState(null);
-  const [currentWind, setCurrentWind] = useState(0);
-
-  let wraperRef = useRef();
+  const [currentWeather, setCurrentWeather] = useState(0);
+  const [wind, setWind] = useState(false);
 
   //functions
   const goToHandler = () => {
@@ -49,6 +47,7 @@ const Home = () => {
       }
     });
   };
+
   //Use effect AXIO
   useEffect(() => {
     axios
@@ -57,34 +56,28 @@ const Home = () => {
       )
       .then((data) => {
         setCurrentWeather(data.data);
-        setCurrentWind(data.data.current.wind_kph);
         goToHandler();
       })
       .catch((err) => {
         console.log(err);
       });
   }, [currentCountry]);
-  //Use effect GSAP
-  useEffect(() => {
-    TweenMax.to(wraperRef, {
-      opacity: 1,
-      duration: 3,
-      stagger: 0.2,
-    });
-  }, []);
+
   return (
     <div className="main-wraper">
-      <div
-        className="wraper"
-        ref={(el) => {
-          wraperRef = el;
-        }}
-      >
-        <WeatherAnimations currentWind={currentWind} />
+      <div className="wraper">
+        <WeatherAnimations
+          currentWeather={currentWeather}
+          currentCountry={currentCountry}
+          wind={wind}
+          setWind={setWind}
+        />
         <div className="section section1">
           <TodayBar
             currentWeather={currentWeather}
             currentCountry={currentCountry}
+            wind={wind}
+            setWind={setWind}
           />
         </div>
         <div className="section section2">

@@ -1,17 +1,16 @@
 import React, { useEffect, useRef } from "react";
-import { motion, useElementScroll } from "framer-motion";
-import { TweenMax, Power3 } from "gsap";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { gsap } from "gsap";
 //Images
 import sunCloud from "../img/sun-cloud.png";
-import { useHistory } from "react-router-dom";
+
 import cloud1img from "../img/cloud1.png";
 import cloud2img from "../img/cloud2.png";
 import cloud3img from "../img/cloud3.png";
 //Styles & Animations
 import "../style/TodayBar.scss";
+import { Timeline, TweenMax } from "gsap/gsap-core";
 
-const TodayBar = ({ currentWeather, currentCountry }) => {
+const TodayBar = ({ currentWeather, currentCountry, wind, setWind }) => {
   let today = new Date();
   let date =
     today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
@@ -20,29 +19,59 @@ const TodayBar = ({ currentWeather, currentCountry }) => {
   let cloud2 = useRef();
   let cloud3 = useRef();
   let todayBar = useRef();
+
   useEffect(() => {
-    TweenMax.to(cloud1, {
-      opacity: 1,
-      x: "200%",
-      duration: 60,
-      yoyo: true,
-      repeat: -1,
-    });
-    TweenMax.to(cloud2, {
-      opacity: 1,
-      x: "300%",
-      duration: 45,
-      delay: 10,
-      repeat: -1,
-    });
-    TweenMax.to(cloud3, {
-      x: "-300%",
-      opacity: 0.6,
-      duration: 60,
-      delay: 2,
-      repeat: -1,
-    });
-  }, []);
+    if (wind) {
+      gsap.fromTo(
+        [cloud1, cloud2, cloud3],
+        { opactiy: 1 },
+        { opacity: 0, duration: 0.3 }
+      );
+      setTimeout(() => {
+        console.log("sad");
+        gsap.fromTo(
+          cloud1,
+          { xPercent: -100, opacity: 1 },
+          { xPercent: 250, repeat: -1, duration: 2 }
+        );
+        gsap.fromTo(
+          cloud2,
+          { xPercent: -100, opacity: 1 },
+          { xPercent: 250, repeat: -1, duration: 2.2, delay: 1 }
+        );
+        gsap.fromTo(
+          cloud3,
+          { xPercent: -100, opacity: 1 },
+          { xPercent: 250, repeat: -1, duration: 1.5, delay: 0.3 }
+        );
+      }, 300);
+    }
+    if (!wind) {
+      gsap.fromTo(
+        [cloud1, cloud2, cloud3],
+        { opactiy: 1 },
+        { opacity: 0, duration: 0.3 }
+      );
+      setTimeout(() => {
+        console.log("sad");
+        gsap.fromTo(
+          cloud1,
+          { xPercent: -100, opacity: 1 },
+          { xPercent: 250, repeat: -1, duration: 60 }
+        );
+        gsap.fromTo(
+          cloud2,
+          { xPercent: -100, opacity: 1 },
+          { xPercent: 250, repeat: -1, duration: 122 }
+        );
+        gsap.fromTo(
+          cloud3,
+          { xPercent: -100, opacity: 1 },
+          { xPercent: 250, repeat: -1, duration: 95 }
+        );
+      }, 300);
+    }
+  }, [wind]);
 
   return (
     <>
