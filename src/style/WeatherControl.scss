@@ -1,0 +1,33 @@
+.weather-wraper {
+  width: 100%;
+  position: relative;
+  height: 100%;
+}
+.weather-box {
+  width: 100%;
+
+  position: absolute;
+
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  box-shadow: 0px 0px 20px rgb(0 0 0 / 5%);
+  backdrop-filter: blur(6px);
+  padding: 1rem;
+  box-sizing: border-box;
+  h3 {
+    text-align: center;
+  }
+}
+.controls {
+  display: flex;
+  justify-content: space-around;
+}
+.control {
+  padding: 1rem 0rem 0 0;
+  margin-right: 1rem;
+  img {
+    cursor: pointer;
+  }
+}
+.control-wind {
+}

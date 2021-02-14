@@ -3,6 +3,7 @@ import "../style/SevenDays.scss";
 //images
 import dropImage from "../img/drop.png";
 import sun from "../img/sun.png";
+import Hour from "../components/Hour";
 
 const SevenDays = ({ currentWeather, currentCountry }) => {
   var dateObj = new Date();
@@ -43,7 +44,11 @@ const SevenDays = ({ currentWeather, currentCountry }) => {
               </div>
             );
           })}
-          <hr />
+
+          <Hour
+            currentWeather={currentWeather}
+            currentCountry={currentCountry}
+          />
         </div>
       )}
     </>

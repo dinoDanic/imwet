@@ -1,9 +1,9 @@
 .hour-box-wrap {
   display: flex;
-  width: 90%;
-  margin-left: 5%;
-  padding: 1.5rem 0rem 6.4rem 0rem;
+  width: 100%;
+  padding: 2rem 0;
   overflow-x: scroll;
+  overflow-y: hidden;
   transition: 0.5s ease all;
   &::-webkit-scrollbar {
     width: 0.3rem;
@@ -76,9 +76,9 @@
   position: relative;
 }
 .tomorrow-line {
-  background: white;
-  width: 5px;
-  height: 185%;
+  background: #94b2ffab;
+  width: 3px;
+  height: 100%;
   margin: 0 1rem 0 0;
   border-radius: 2rem;
 }

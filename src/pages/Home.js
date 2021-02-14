@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { TweenMax, Power3, gsap } from "gsap";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-//Images
 //Style
 import "../style/Home.scss";
 //Components
@@ -10,7 +7,7 @@ import TodayBar from "../components/TodayBar";
 import SearchBar from "../components/SearchBar.js";
 import CountryBar from "../components/CountryBar";
 import SevenDays from "../components/SevenDays";
-import Empty from "../components/Empty";
+import WeatherControl from "../components/WeatherControl";
 import Hour from "../components/Hour";
 import MoreInfo from "../components/MoreInfo";
 import WeatherAnimations from "../components/WeatherAnimations";
@@ -20,6 +17,9 @@ const Home = () => {
   const [currentCountry, setCurrentCountry] = useState("Sveti Ivan Zelina");
   const [currentWeather, setCurrentWeather] = useState(0);
   const [wind, setWind] = useState(false);
+  const [snow, setSnow] = useState(false);
+  const [rain, setRain] = useState(false);
+  const [thunder, setThunder] = useState(false);
 
   //functions
   const goToHandler = () => {
@@ -71,6 +71,10 @@ const Home = () => {
           currentCountry={currentCountry}
           wind={wind}
           setWind={setWind}
+          snow={snow}
+          setSnow={setSnow}
+          rain={rain}
+          setRain={setRain}
         />
         <div className="section section1">
           <TodayBar
@@ -91,13 +95,18 @@ const Home = () => {
             currentCountry={currentCountry}
           />
           {/*           <MoreInfo /> */}
-          <Hour
-            currentWeather={currentWeather}
-            currentCountry={currentCountry}
-          />
         </div>
         <div className="section section3">
-          <Empty />
+          <WeatherControl
+            wind={wind}
+            setWind={setWind}
+            snow={snow}
+            setSnow={setSnow}
+            rain={rain}
+            setRain={setRain}
+            thunder={thunder}
+            setThunder={setThunder}
+          />
         </div>
       </div>
     </div>

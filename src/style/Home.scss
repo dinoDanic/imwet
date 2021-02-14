@@ -8,7 +8,7 @@
 }
 .wraper {
   width: 80%;
-  min-height: 70vh;
+  height: 80vh;
   background: #d2f0ff;
   border-radius: 35px;
   padding: 1rem;
@@ -31,7 +31,6 @@
 }
 .section1 {
   flex-grow: 1;
-
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -39,11 +38,11 @@
 }
 .section2 {
   flex-grow: 10;
-  padding: 2rem;
+  padding: 2rem 0.5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .section3 {
   flex-grow: 1;
+  padding: 2rem 1rem 2rem 0.5rem;
 }
