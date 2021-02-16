@@ -2,12 +2,29 @@
   position: absolute;
   display: block;
   width: 110%;
-  left: -10%;
+  left: 0%;
   height: 100%;
   top: 0;
 }
-.snow-animation,
-.rain-animation {
+.leaf-animation-on-top {
+  position: absolute;
+  width: 80%;
+  background: green;
+  height: 80%;
+  z-index: 10;
+  opacity: 0;
+}
+.leaf-svg-cont {
+  top: 0;
+  position: absolute;
+}
+.svg-snow-container {
+  top: 0;
+  position: absolute;
+}
+
+.rain-animation,
+.thunder-animation {
   left: 0;
   width: 100%;
   height: 100%;
@@ -15,12 +32,44 @@
   overflow: hidden;
   top: 0;
 }
-
-.ball {
+.snow-animation {
+  left: 0;
   width: 100%;
+  height: 100%;
   position: absolute;
-  bottom: -44px;
-  opacity: 0.8;
+
+  top: 0;
+}
+
+.rain-animation,
+.thunder-animation,
+.snow-animation {
+  display: flex;
+  justify-content: space-evenly;
+}
+.line {
+  width: 1px;
+  height: 15px;
+}
+.thunder-line2,
+.thunder-line {
+  width: 1px;
+  height: 15px;
+}
+.thunder-line {
+  background: rgb(94, 206, 226);
+}
+.thunder-line2 {
+  background: rgb(26, 157, 180);
+}
+.rain-line {
+  background: rgb(94, 206, 226);
+}
+.rain-line2 {
+  background: rgb(26, 157, 180);
+}
+.leaf {
+  display: block;
 }
 .snow-flake {
   width: 15px;
@@ -28,16 +77,15 @@
   border-radius: 50%;
   background: white;
 }
-.rain-animation {
-  display: flex;
-  justify-content: space-evenly;
-}
 
-.line {
-  width: 1px;
-  height: 20px;
-  background: rgb(94, 206, 226);
+.thunder-bolt-container {
+  position: absolute;
+  top: 0;
+  left: 75%;
+  width: 130px;
+  height: 100%;
+  z-index: 999;
 }
-.rain-line2 {
-  background: rgb(26, 157, 180);
+.thunder {
+  height: 100vh;
 }

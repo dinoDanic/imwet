@@ -8,7 +8,7 @@ import cloud2img from "../img/cloud2.png";
 import cloud3img from "../img/cloud3.png";
 //Styles & Animations
 import "../style/TodayBar.scss";
-import { cloudRight, cloudRight2, cloudLeft } from "../animations/motion";
+import { cloudRight, cloudRight2, cloudLeft } from "../animations/Clouds";
 
 const TodayBar = ({ currentWeather, currentCountry, wind, setWind }) => {
   let today = new Date();

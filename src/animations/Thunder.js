@@ -1,32 +1,29 @@
 import React from "react";
 
-const rendomX = () => {
-  let rendom = Math.floor(Math.random() * 800);
-  return rendom;
-};
-export const RainContainer = {
-  hidden: { x: 100 },
+export const ThunderContainer = {
   exit: {},
-  show: { x: 0, transition: { staggerChildren: 0.2, staggerDirection: 1 } },
+  show: { x: 0, transition: { staggerChildren: 0.1, staggerDirection: -1 } },
 };
-export const rainAni1 = {
+export const rainThunderAni1 = {
   hidden: { y: -100 },
   show: {
     y: 900,
+
     transition: {
-      duration: 0.9,
+      duration: 0.6,
       ease: "easeIn",
       repeat: Infinity,
     },
   },
   exit: { opacity: 0, transition: { duration: 3 } },
 };
-export const rainAni2 = {
+export const rainThunderAni2 = {
   hidden: { y: -100 },
   show: {
     y: 900,
+
     transition: {
-      duration: 1.3,
+      duration: 0.8,
       ease: "easeIn",
       repeat: Infinity,
     },

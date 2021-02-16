@@ -1,16 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { motion } from "framer-motion";
 //Style
 import "../style/Home.scss";
 //Components
 import TodayBar from "../components/TodayBar";
 import SearchBar from "../components/SearchBar.js";
-import CountryBar from "../components/CountryBar";
 import SevenDays from "../components/SevenDays";
 import WeatherControl from "../components/WeatherControl";
-import Hour from "../components/Hour";
-import MoreInfo from "../components/MoreInfo";
 import WeatherAnimations from "../components/WeatherAnimations";
+import ThunderBolt from "../components/ThunderBolt";
+
+import {
+  sectionContainerAni,
+  sectionChildrenAni,
+} from "../animations/frontPageMotion";
+
 //API
 
 const Home = () => {
@@ -20,7 +25,6 @@ const Home = () => {
   const [snow, setSnow] = useState(false);
   const [rain, setRain] = useState(false);
   const [thunder, setThunder] = useState(false);
-
   //functions
   const goToHandler = () => {
     const boxs = document.querySelectorAll(".hour-time");
@@ -65,7 +69,13 @@ const Home = () => {
 
   return (
     <div className="main-wraper">
-      <div className="wraper">
+      <ThunderBolt thunder={thunder} />
+      <motion.div
+        className="wraper"
+        variants={sectionContainerAni}
+        initial="hidden"
+        animate="show"
+      >
         <WeatherAnimations
           currentWeather={currentWeather}
           currentCountry={currentCountry}
@@ -75,16 +85,18 @@ const Home = () => {
           setSnow={setSnow}
           rain={rain}
           setRain={setRain}
+          thunder={thunder}
+          setThunder={setThunder}
         />
-        <div className="section section1">
+        <motion.div className="section section1" variants={sectionChildrenAni}>
           <TodayBar
             currentWeather={currentWeather}
             currentCountry={currentCountry}
             wind={wind}
             setWind={setWind}
           />
-        </div>
-        <div className="section section2">
+        </motion.div>
+        <motion.div className="section section2" variants={sectionChildrenAni}>
           <SearchBar
             currentWeather={currentWeather}
             setCurrentCountry={setCurrentCountry}
@@ -94,9 +106,8 @@ const Home = () => {
             currentWeather={currentWeather}
             currentCountry={currentCountry}
           />
-          {/*           <MoreInfo /> */}
-        </div>
-        <div className="section section3">
+        </motion.div>
+        <motion.div className="section section3" variants={sectionChildrenAni}>
           <WeatherControl
             wind={wind}
             setWind={setWind}
@@ -107,8 +118,8 @@ const Home = () => {
             thunder={thunder}
             setThunder={setThunder}
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

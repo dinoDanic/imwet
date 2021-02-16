@@ -58,6 +58,9 @@ const Empty = ({
     if (rain) {
       setRain(false);
     }
+    if (thunder) {
+      setThunder(false);
+    }
   };
   const snowHandler = () => {
     if (snow) {
@@ -71,6 +74,9 @@ const Empty = ({
     }
     if (rain) {
       setRain(false);
+    }
+    if (thunder) {
+      setThunder(false);
     }
   };
   const rainHandler = () => {
@@ -86,8 +92,27 @@ const Empty = ({
     if (snow) {
       setSnow(false);
     }
+    if (thunder) {
+      setThunder(false);
+    }
   };
-  const thunderHandler = () => {};
+  const thunderHandler = () => {
+    if (thunder) {
+      setThunder(false);
+    }
+    if (!thunder) {
+      setThunder(true);
+    }
+    if (wind) {
+      setWind(false);
+    }
+    if (snow) {
+      setSnow(false);
+    }
+    if (rain) {
+      setRain(false);
+    }
+  };
   return (
     <div className="weather-wraper">
       <div className="weather-box">

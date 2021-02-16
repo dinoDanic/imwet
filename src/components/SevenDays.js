@@ -12,9 +12,9 @@ const SevenDays = ({ currentWeather, currentCountry }) => {
     <>
       {currentWeather && (
         <div className="seven-wraper">
-          <h4>
+          <h2>
             {currentWeather.location.name}, {currentWeather.location.country}
-          </h4>
+          </h2>
           {currentWeather.forecast.forecastday.map((forecast) => {
             return (
               <div className="day" key={forecast.date}>
