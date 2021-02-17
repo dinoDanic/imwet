@@ -1,0 +1,129 @@
+.seven-wraper {
+  margin: 1rem 0rem 0 0rem;
+  border-radius: 30px;
+  height: 100%;
+  padding: 2rem 2rem;
+
+  h4 {
+  }
+  h2 {
+    color: #666;
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+}
+.day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin: 1rem 0 0 0;
+}
+.drop {
+  display: flex;
+  justify-content: center;
+  img {
+    margin-right: 7px;
+    width: 7px;
+    height: 11px;
+  }
+}
+.weather-icon-days {
+  img {
+    width: 26px;
+    height: 26px;
+  }
+}
+.progress-bar {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+.bars {
+  position: relative;
+  width: 100%;
+  margin-top: -2px;
+}
+.bar1,
+.bar2 {
+  width: 100%;
+  background: rgba(148, 178, 255, 0.17);
+  border-radius: 3rem;
+  height: 5px;
+  position: absolute;
+  transition: ease all 0.5s;
+}
+.bar2 {
+  background: #94b2ff;
+  width: 0%;
+}
+.p-w-left,
+.p-w-right {
+  min-width: 50px;
+}
+.three-days-cont {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0 0 0;
+  flex-flow: row wrap;
+}
+.three-day {
+  flex-grow: 1;
+  width: 30%;
+  min-width: 150px;
+  border-radius: 1rem;
+  min-height: 150px;
+  background: #f7f7f7;
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
+  margin: 2rem 0.5rem;
+  h3 {
+    font-weight: 800;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+}
+.info-top {
+  p {
+    text-align: center;
+    padding: 0.3rem;
+  }
+}
+.graph-thing {
+  margin: 1rem 0;
+  p {
+  }
+}
+.bar {
+  width: 100%;
+  height: 11px;
+  border-radius: 10px;
+  background: white;
+
+  overflow: hidden;
+  position: relative;
+  margin: 0.1rem 0 0.8rem 0;
+}
+.top-bar {
+  position: absolute;
+  top: 0;
+  transition: 0.3s ease all;
+  left: 0;
+  background: #9aa8bd;
+  height: 100%;
+  border-radius: 10px;
+}
+.get-me-top {
+  position: absolute;
+  top: -20px;
+  left: 0px;
+  font-size: 0.9rem;
+
+  width: 100%;
+}
+.weather-icon-top {
+  position: absolute;
+  top: -30px;
+  right: 5px;
+}

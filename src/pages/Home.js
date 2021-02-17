@@ -6,7 +6,7 @@ import "../style/Home.scss";
 //Components
 import TodayBar from "../components/TodayBar";
 import SearchBar from "../components/SearchBar.js";
-import SevenDays from "../components/SevenDays";
+import ThreeDays from "../components/ThreeDays";
 import WeatherControl from "../components/WeatherControl";
 import WeatherAnimations from "../components/WeatherAnimations";
 import ThunderBolt from "../components/ThunderBolt";
@@ -118,7 +118,6 @@ const Home = () => {
             },
           },
         }}
-        initial={{ background: "#d2f0ff" }}
         animate={thunderTIME ? "pulse" : null}
       >
         <WeatherAnimations
@@ -147,7 +146,7 @@ const Home = () => {
             setCurrentCountry={setCurrentCountry}
             currentCountry={currentCountry}
           />
-          <SevenDays
+          <ThreeDays
             currentWeather={currentWeather}
             currentCountry={currentCountry}
           />

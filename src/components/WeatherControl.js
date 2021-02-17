@@ -122,7 +122,7 @@ const Empty = ({
   };
   return (
     <div className="weather-wraper">
-      <div className="weather-box">
+      <div className="weather-box box-style">
         <h3>Weather Controls</h3>
         <div className="controls">
           <div

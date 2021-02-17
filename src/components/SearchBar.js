@@ -17,7 +17,7 @@ const SearchBar = ({ setCurrentCountry }) => {
         <form onSubmit={buttonHandler}>
           <input
             placeholder="Change Locations"
-            className="input-search"
+            className="input-search box-style"
             type="text"
             id="input"
             onChange={(event) => setInputValue(event.target.value)}

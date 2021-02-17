@@ -53,8 +53,6 @@ import {
   snow2Ani14,
   snow2Ani15,
 } from "../animations/Snow";
-//Images
-import ballImg from "../img/ball.png";
 
 const WeatherAnimations = ({
   currentWeather,

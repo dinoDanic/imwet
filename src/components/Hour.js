@@ -4,6 +4,7 @@ import "../style/Hour.scss";
 const Hour = ({ currentWeather, currentCountry }) => {
   return (
     <>
+      <h4>Hourly weather</h4>
       {currentWeather && (
         <div className="hour-box-wrap">
           {currentWeather.forecast.forecastday[0].hour.map((hour) => {
@@ -32,7 +33,7 @@ const Hour = ({ currentWeather, currentCountry }) => {
           <div className="tomorrow-hold">
             <div className="tomorrow-line">
               <div className="tomorrow-text">
-                <p>Tomorrow</p>
+                <p></p>
               </div>
             </div>
           </div>
