@@ -14,7 +14,9 @@ import ThunderBolt from "../components/ThunderBolt";
 import {
   sectionContainerAni,
   sectionChildrenAni,
+  mainWraperAni,
 } from "../animations/frontPageMotion";
+import { buildQueries } from "@testing-library/react";
 
 //API
 
@@ -25,7 +27,10 @@ const Home = () => {
   const [snow, setSnow] = useState(false);
   const [rain, setRain] = useState(false);
   const [thunder, setThunder] = useState(false);
-  //functions
+  const [numberX, setNumberX] = useState(0);
+  const [repeatThunder, setRepeatThunder] = useState(2000);
+  const [thunderTIME, setThunderTIME] = useState(false);
+  //functios
   const goToHandler = () => {
     const boxs = document.querySelectorAll(".hour-time");
     let current = new Date();
@@ -56,7 +61,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.weatherapi.com/v1/forecast.json?key=28618711c84f44adbf1202156210602&q=${currentCountry}&days=7`
+        `https://api.weatherapi.com/v1/forecast.json?key=d13d69e397d6417e80f162940211602&q=${currentCountry}&days=7`
       )
       .then((data) => {
         setCurrentWeather(data.data);
@@ -67,14 +72,54 @@ const Home = () => {
       });
   }, [currentCountry]);
 
+  //THUNDER THING
+
+  const getnumber = () => {
+    return repeatThunder;
+  };
+  useInterval(() => {
+    setNumberX(Math.round(Math.random() * 1600) - 800);
+    setRepeatThunder(Math.round(Math.random() * 5000));
+
+    console.log("THUNDER");
+    console.log(repeatThunder);
+  }, getnumber());
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
+
+  // custom JS animation for thunder effect
+
   return (
-    <div className="main-wraper">
-      <ThunderBolt thunder={thunder} />
+    <motion.div className="main-wraper">
+      <ThunderBolt thunder={thunder} numberX={numberX} />
       <motion.div
         className="wraper"
-        variants={sectionContainerAni}
-        initial="hidden"
-        animate="show"
+        variants={{
+          pulse: {
+            y: [0, -15, 10, -5, 0],
+            transition: {
+              duration: 0.18,
+              delay: 0.2,
+            },
+          },
+        }}
+        initial={{ background: "#d2f0ff" }}
+        animate={thunderTIME ? "pulse" : null}
       >
         <WeatherAnimations
           currentWeather={currentWeather}
@@ -117,10 +162,12 @@ const Home = () => {
             setRain={setRain}
             thunder={thunder}
             setThunder={setThunder}
+            thunderTIME={thunderTIME}
+            setThunderTIME={setThunderTIME}
           />
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

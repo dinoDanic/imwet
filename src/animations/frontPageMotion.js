@@ -10,3 +10,10 @@ export const sectionChildrenAni = {
     transition: { duration: 0.5, type: "spring" },
   },
 };
+export const mainWraperAni = {
+  hidden: {},
+  show: {
+    y: [-10, 15, -8, -10],
+    transition: { duration: 0.2, delay: 0.2 },
+  },
+};

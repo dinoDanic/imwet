@@ -46,10 +46,14 @@ const TodayBar = ({ currentWeather, currentCountry, wind, setWind }) => {
           <>
             <div className="weather-icon">
               <img
-                src={currentWeather.current.condition.icon}
-                alt="{currentWeather.current.condition.icon}"
+                src={
+                  currentWeather.forecast.forecastday[0].hour[0].condition.icon
+                }
+                alt="{currentWeather.forecast.forecastday[0].hour[0].condition.icon}"
               />
-              <p>{currentWeather.current.condition.text}</p>
+              <p>
+                {currentWeather.forecast.forecastday[0].hour[0].condition.text}
+              </p>
             </div>
             <div className="today-date">
               <h2>Today</h2>
@@ -58,7 +62,9 @@ const TodayBar = ({ currentWeather, currentCountry, wind, setWind }) => {
 
             <div className="current-temperature">
               <h1>
-                {Math.round(currentWeather.current.temp_c)}
+                {Math.round(
+                  currentWeather.forecast.forecastday[0].hour[0].temp_c
+                )}
                 <span>°c</span>
               </h1>
             </div>
@@ -71,19 +77,26 @@ const TodayBar = ({ currentWeather, currentCountry, wind, setWind }) => {
             <div className="other-info-wrap">
               <div className="other-info">
                 <p>Feels like:</p>
-                <p>{currentWeather.current.feelslike_c} °c</p>
+                <p>
+                  {currentWeather.forecast.forecastday[0].hour[0].feelslike_c}{" "}
+                  °c
+                </p>
               </div>
               <div className="other-info">
                 <p>Wind:</p>
-                <p>{currentWeather.current.wind_kph} kph</p>
+                <p>
+                  {currentWeather.forecast.forecastday[0].hour[0].wind_kph} kph
+                </p>
               </div>
               <div className="other-info">
                 <p>UV:</p>
-                <p>{currentWeather.current.uv}</p>
+                <p>{currentWeather.forecast.forecastday[0].hour[0].uv}</p>
               </div>
               <div className="other-info">
                 <p>Gust:</p>
-                <p>{currentWeather.current.gust_kph} kph</p>
+                <p>
+                  {currentWeather.forecast.forecastday[0].hour[0].gust_kph} kph
+                </p>
               </div>
             </div>
           </>

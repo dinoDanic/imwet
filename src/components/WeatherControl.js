@@ -14,6 +14,8 @@ const Empty = ({
   setRain,
   thunder,
   setThunder,
+  setThunderTIME,
+  thunderTIME,
 }) => {
   let windIconImg = useRef(null);
   let snowFlakeIcon = useRef(null);
@@ -60,6 +62,7 @@ const Empty = ({
     }
     if (thunder) {
       setThunder(false);
+      setThunderTIME(false);
     }
   };
   const snowHandler = () => {
@@ -77,6 +80,7 @@ const Empty = ({
     }
     if (thunder) {
       setThunder(false);
+      setThunderTIME(false);
     }
   };
   const rainHandler = () => {
@@ -94,14 +98,17 @@ const Empty = ({
     }
     if (thunder) {
       setThunder(false);
+      setThunderTIME(false);
     }
   };
   const thunderHandler = () => {
     if (thunder) {
       setThunder(false);
+      setThunderTIME(false);
     }
     if (!thunder) {
       setThunder(true);
+      setThunderTIME(true);
     }
     if (wind) {
       setWind(false);

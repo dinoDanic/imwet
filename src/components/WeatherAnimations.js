@@ -103,7 +103,7 @@ const WeatherAnimations = ({
               animate="show"
               initial="hidden"
             >
-              <motion.svg width="120%" height="80vh" className="leaf-svg-cont">
+              <motion.svg width="150%" height="80vh" className="leaf-svg-cont">
                 <motion.path
                   variants={leafAni1}
                   animate="show"

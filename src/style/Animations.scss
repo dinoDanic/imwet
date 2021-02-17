@@ -53,7 +53,7 @@
 }
 .thunder-line2,
 .thunder-line {
-  width: 1px;
+  width: 1.5px;
   height: 15px;
 }
 .thunder-line {
@@ -78,13 +78,18 @@
   background: white;
 }
 
-.thunder-bolt-container {
+.thunder-bolt-container1,
+.thunder-bolt-container2 {
   position: absolute;
   top: 0;
-  left: 75%;
   width: 130px;
   height: 100%;
   z-index: 999;
+}
+.thunder-bolt-container1 {
+}
+.thunder-bolt-container2 {
+  left: 70%;
 }
 .thunder {
   height: 100vh;
