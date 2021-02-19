@@ -1,0 +1,94 @@
+.hour3-wraper {
+  flex-grow: 2;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 0 1rem 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgb(196, 196, 196);
+    border-radius: 1rem;
+  }
+  &::-webkit-scrollbar {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+  }
+}
+.hour {
+  width: 40px;
+  height: 100%;
+  margin: 0 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hour-time,
+.hour-time1 {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hour-time-a {
+  font-size: 0.7rem !important;
+  font-weight: 800;
+}
+.goto {
+}
+.hour-line {
+  flex-grow: 10;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hour-line-inner {
+  background: #f3f3f3;
+  width: 1px;
+  height: 100%;
+  position: relative;
+}
+.rain-hour {
+  flex: 1;
+  width: 150%;
+  left: -25%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+.rain-bar {
+  width: 100%;
+  background: #d2f0ff;
+  border-radius: 5px;
+  min-height: 10%;
+  position: absolute;
+  z-index: -1;
+  transition: 0.3s ease all;
+}
+.rain-text {
+  p {
+    font-weight: 800;
+    color: #226a8e;
+    margin: 0.3rem 0;
+  }
+}
+.weather-scale {
+  width: 25px;
+  position: absolute;
+  left: -12px;
+
+  padding: 5px 0px 10px 0px;
+  transition: 0.3s all ease;
+  p {
+    text-align: center;
+    font-weight: 800;
+  }
+}

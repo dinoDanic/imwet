@@ -1,0 +1,43 @@
+.days3-wraper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.days-day {
+  h3 {
+    font-weight: 600;
+  }
+  margin: 2rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+}
+.days-current-bar {
+  width: 95%;
+  position: absolute;
+  height: 50px;
+  background: rgb(243, 243, 243);
+  top: 58px;
+  left: 2.5%;
+  border-radius: 15px;
+  z-index: -1;
+}
+.icon-rain {
+  display: flex;
+}
+.icon-rain {
+  img {
+    margin-top: -5px;
+  }
+  p {
+    color: #226a8e;
+    font-weight: 800;
+    min-width: 40px;
+    margin-left: 8px;
+  }
+}
+.light {
+  color: #999;
+  padding: 0 5px 0 0;
+}

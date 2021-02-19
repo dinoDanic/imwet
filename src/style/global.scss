@@ -3,6 +3,8 @@
   padding: 0;
 }
 body {
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Slab", serif;
   font-family: "Raleway", sans-serif;
   overflow: hidden;
 }
@@ -26,7 +28,7 @@ h4 {
   color: #333;
 }
 p {
-  color: #666;
+  color: #333;
   font-size: 0.7rem;
   font-weight: 300;
 }
@@ -43,4 +45,6 @@ hr {
     0 16px 16px rgba(0, 0, 0, 0.03);
   backdrop-filter: blur(5px);
   background: rgba(255, 255, 255, 0.9);
+
+  border-radius: 20px;
 }

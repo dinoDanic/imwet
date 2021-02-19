@@ -10,6 +10,7 @@ import ThreeDays from "../components/ThreeDays";
 import WeatherControl from "../components/WeatherControl";
 import WeatherAnimations from "../components/WeatherAnimations";
 import ThunderBolt from "../components/ThunderBolt";
+import Forecast from "../components/Forecast";
 
 import {
   sectionContainerAni,
@@ -49,7 +50,7 @@ const Home = () => {
             inline: "start",
             block: "start",
           });
-        }, 1000);
+        }, 500);
       } else {
         data.classList.remove("hour-time-a");
         data.parentNode.firstChild.classList.remove("goto");
@@ -80,9 +81,6 @@ const Home = () => {
   useInterval(() => {
     setNumberX(Math.round(Math.random() * 1600) - 800);
     setRepeatThunder(Math.round(Math.random() * 5000));
-
-    console.log("THUNDER");
-    console.log(repeatThunder);
   }, getnumber());
   function useInterval(callback, delay) {
     const savedCallback = useRef();
@@ -146,10 +144,11 @@ const Home = () => {
             setCurrentCountry={setCurrentCountry}
             currentCountry={currentCountry}
           />
-          <ThreeDays
+          <Forecast currentWeather={currentWeather} />
+          {/* <ThreeDays
             currentWeather={currentWeather}
             currentCountry={currentCountry}
-          />
+          /> */}
         </motion.div>
         <motion.div className="section section3" variants={sectionChildrenAni}>
           <WeatherControl

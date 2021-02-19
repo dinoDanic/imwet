@@ -72,14 +72,12 @@ const WeatherAnimations = ({
       }
       if (currentWeather.current.wind_kph < 20) {
         setWind(false);
-        console.log();
       }
       if (currentWeather.forecast.forecastday[0].hour[0].will_it_snow > 0) {
         setSnow(true);
       }
       if (currentWeather.forecast.forecastday[0].hour[0].will_it_snow <= 0) {
         setSnow(false);
-        console.log(currentWeather);
       }
       if (currentWeather.forecast.forecastday[0].hour[0].will_it_rain > 0) {
         setRain(true);
