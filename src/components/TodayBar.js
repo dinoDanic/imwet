@@ -58,28 +58,27 @@ const TodayBar = ({ currentWeather, currentCountry, wind, setWind }) => {
             <div className="today-date">
               <h2>Today</h2>
               <p>{date}</p>
+              <div className="current-temperature">
+                <h1>
+                  {Math.round(
+                    currentWeather.forecast.forecastday[0].hour[0].temp_c
+                  )}
+                  °
+                </h1>
+              </div>
             </div>
 
-            <div className="current-temperature">
-              <h1>
-                {Math.round(
-                  currentWeather.forecast.forecastday[0].hour[0].temp_c
-                )}
-                <span>°c</span>
-              </h1>
-            </div>
-            <div className="country">
+            {/*          <div className="country">
               <p>
                 {currentWeather.location.name}, <br />
                 {currentWeather.location.country}
               </p>
-            </div>
+            </div> */}
             <div className="other-info-wrap">
               <div className="other-info">
                 <p>Feels like:</p>
                 <p>
-                  {currentWeather.forecast.forecastday[0].hour[0].feelslike_c}{" "}
-                  °c
+                  {currentWeather.forecast.forecastday[0].hour[0].feelslike_c}°
                 </p>
               </div>
               <div className="other-info">

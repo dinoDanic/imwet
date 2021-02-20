@@ -1,13 +1,10 @@
 .weather-wraper {
   width: 100%;
   position: relative;
-  height: 100%;
 }
 .weather-box {
   width: 100%;
-  position: absolute;
-
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   box-sizing: border-box;
   h3 {
     text-align: center;
@@ -22,6 +19,9 @@
   margin-right: 1rem;
   img {
     cursor: pointer;
+  }
+  &:last-child {
+    margin-right: 0;
   }
 }
 .control-wind {

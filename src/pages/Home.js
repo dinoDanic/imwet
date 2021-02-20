@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 //Style
 import "../style/Home.scss";
 //Components
@@ -11,6 +11,7 @@ import WeatherControl from "../components/WeatherControl";
 import WeatherAnimations from "../components/WeatherAnimations";
 import ThunderBolt from "../components/ThunderBolt";
 import Forecast from "../components/Forecast";
+import GeekModeActive from "../components/GeekModeActive";
 
 import {
   sectionContainerAni,
@@ -18,6 +19,7 @@ import {
   mainWraperAni,
 } from "../animations/frontPageMotion";
 import { buildQueries } from "@testing-library/react";
+import GeekMode from "../components/GeekModeActive";
 
 //API
 
@@ -40,7 +42,7 @@ const Home = () => {
       if (hour < 10) {
         hour = "0" + hour;
       }
-      if (data.innerText === `${hour}`) {
+      if (data.innerText === `${hour}` || data.innerText === "Current") {
         setTimeout(() => {
           data.classList.add("hour-time-a");
           data.innerText = "Current";
@@ -100,8 +102,6 @@ const Home = () => {
     }, [delay]);
   }
 
-  // custom JS animation for thunder effect
-
   return (
     <motion.div className="main-wraper">
       <ThunderBolt thunder={thunder} numberX={numberX} />
@@ -130,40 +130,74 @@ const Home = () => {
           thunder={thunder}
           setThunder={setThunder}
         />
-        <motion.div className="section section1" variants={sectionChildrenAni}>
-          <TodayBar
-            currentWeather={currentWeather}
-            currentCountry={currentCountry}
-            wind={wind}
-            setWind={setWind}
-          />
-        </motion.div>
-        <motion.div className="section section2" variants={sectionChildrenAni}>
-          <SearchBar
-            currentWeather={currentWeather}
-            setCurrentCountry={setCurrentCountry}
-            currentCountry={currentCountry}
-          />
-          <Forecast currentWeather={currentWeather} />
-          {/* <ThreeDays
+        <AnimatePresence>
+          {!currentWeather && (
+            <motion.div
+              className="loaderCont"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 2 } }}
+            >
+              <motion.div
+                className="box-spin"
+                animate={{ rotate: 200, transition: { repeat: Infinity } }}
+              ></motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {currentWeather && (
+          <>
+            <motion.div
+              className="section section1"
+              variants={{
+                show: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+                hidden: { opacity: 0, scale: 0.95 },
+              }}
+              animate="show"
+              initial="hidden"
+            >
+              <TodayBar
+                currentWeather={currentWeather}
+                currentCountry={currentCountry}
+                wind={wind}
+                setWind={setWind}
+              />
+            </motion.div>
+            <motion.div
+              className="section section2"
+              variants={sectionChildrenAni}
+            >
+              <SearchBar
+                currentWeather={currentWeather}
+                setCurrentCountry={setCurrentCountry}
+                currentCountry={currentCountry}
+              />
+              <Forecast currentWeather={currentWeather} />
+              {/* <ThreeDays
             currentWeather={currentWeather}
             currentCountry={currentCountry}
           /> */}
-        </motion.div>
-        <motion.div className="section section3" variants={sectionChildrenAni}>
-          <WeatherControl
-            wind={wind}
-            setWind={setWind}
-            snow={snow}
-            setSnow={setSnow}
-            rain={rain}
-            setRain={setRain}
-            thunder={thunder}
-            setThunder={setThunder}
-            thunderTIME={thunderTIME}
-            setThunderTIME={setThunderTIME}
-          />
-        </motion.div>
+            </motion.div>
+            <motion.div
+              className="section section3"
+              variants={sectionChildrenAni}
+            >
+              <WeatherControl
+                wind={wind}
+                setWind={setWind}
+                snow={snow}
+                setSnow={setSnow}
+                rain={rain}
+                setRain={setRain}
+                thunder={thunder}
+                setThunder={setThunder}
+                thunderTIME={thunderTIME}
+                setThunderTIME={setThunderTIME}
+              />
+              <GeekModeActive currentWeather={currentWeather} />
+            </motion.div>
+          </>
+        )}
       </motion.div>
     </motion.div>
   );

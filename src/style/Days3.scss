@@ -2,29 +2,36 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  h4 {
+    margin: 1rem 0 0 0;
+  }
 }
 .days-day {
-  h3 {
-    font-weight: 600;
-  }
-  margin: 2rem 0 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
+  background: #f7f7f7;
+  align-items: center;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  margin: 0.9rem 0 0 0;
 }
-.days-current-bar {
+
+.days-current-bar1 {
   width: 95%;
   position: absolute;
   height: 50px;
-  background: rgb(243, 243, 243);
+  background: #e5f6ff;
   top: 58px;
   left: 2.5%;
   border-radius: 15px;
   z-index: -1;
 }
+
 .icon-rain {
   display: flex;
+  margin-top: 5px;
 }
 .icon-rain {
   img {
@@ -40,4 +47,10 @@
 .light {
   color: #999;
   padding: 0 5px 0 0;
+}
+.wind-day {
+  width: 90px;
+  p {
+    text-align: right;
+  }
 }

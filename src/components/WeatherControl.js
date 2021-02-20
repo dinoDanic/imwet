@@ -121,7 +121,19 @@ const Empty = ({
     }
   };
   return (
-    <div className="weather-wraper">
+    <motion.div
+      className="weather-wraper"
+      variants={{
+        show: {
+          opacity: 1,
+          scale: 1,
+          transition: { duration: 0.5, delay: 0.45 },
+        },
+        hidden: { opacity: 0, scale: 0.95 },
+      }}
+      animate="show"
+      initial="hidden"
+    >
       <div className="weather-box box-style">
         <h3>Weather Controls</h3>
         <div className="controls">
@@ -176,7 +188,7 @@ const Empty = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

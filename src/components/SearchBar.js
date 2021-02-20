@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import "../style/SearchBar.scss";
 import axios from "axios";
 import gradovi from "../gradovi";
@@ -13,7 +14,19 @@ const SearchBar = ({ setCurrentCountry }) => {
 
   return (
     <div>
-      <div className="search-bar">
+      <motion.div
+        className="search-bar"
+        variants={{
+          show: {
+            opacity: 1,
+            scale: 1,
+            transition: { duration: 0.5, delay: 0.15 },
+          },
+          hidden: { opacity: 0, scale: 0.95 },
+        }}
+        animate="show"
+        initial="hidden"
+      >
         <form onSubmit={buttonHandler}>
           <input
             placeholder="Change Locations"
@@ -24,7 +37,7 @@ const SearchBar = ({ setCurrentCountry }) => {
           />
           <div id="match-list"></div>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };
