@@ -39,23 +39,16 @@ const Home = () => {
     let current = new Date();
     boxs.forEach((data) => {
       let hour = current.getHours();
+      if (data.innerText < hour) {
+        data.parentElement.remove();
+      }
       if (hour < 10) {
         hour = "0" + hour;
       }
       if (data.innerText === `${hour}` || data.innerText === "Current") {
-        setTimeout(() => {
-          data.classList.add("hour-time-a");
-          data.innerText = "Current";
-          data.parentNode.firstChild.classList.add("goto");
-          data.parentNode.firstChild.scrollIntoView({
-            behavior: "smooth",
-            inline: "start",
-            block: "start",
-          });
-        }, 500);
+        data.classList.add("hour-time-a");
       } else {
         data.classList.remove("hour-time-a");
-        data.parentNode.firstChild.classList.remove("goto");
       }
     });
   };

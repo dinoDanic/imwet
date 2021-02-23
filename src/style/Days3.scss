@@ -1,21 +1,24 @@
 .days3-wraper {
-  flex-grow: 1;
+  flex-grow: 3;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   h4 {
     margin: 1rem 0 0 0;
   }
 }
 .days-day {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   position: relative;
   background: #f7f7f7;
-  align-items: center;
-  padding: 0.2rem 1rem;
+  width: 115px;
+  padding: 1rem;
+  display: flex;
+  border: 1px solid #eaeaea;
   border-radius: 1rem;
-  margin: 0.9rem 0 0 0;
+  margin: 0.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 5;
 }
 
 .days-current-bar1 {
@@ -51,6 +54,5 @@
 .wind-day {
   width: 90px;
   p {
-    text-align: right;
   }
 }

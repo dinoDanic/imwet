@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import "../style/ThreeDays.scss";
 //images
-import dropImage from "../img/drop.png";
-import sun from "../img/sun.png";
+
 import Hour from "./Hour";
 
 const ThreeDays = ({ currentWeather, currentCountry }) => {

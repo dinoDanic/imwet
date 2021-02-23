@@ -1,6 +1,28 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import "../style/Hours3.scss";
+//Images
+import sunImg from "../img/weather-icons/sun.png";
+import cloudMoonImg from "../img/weather-icons/cloud-moon.png";
+import cloudsImg from "../img/weather-icons/clouds.png";
+
+import fogImg from "../img/weather-icons/fog.png";
+import havyRainImg from "../img/weather-icons/heavy-rain.png";
+import moonStarImg from "../img/weather-icons/moon-star.png";
+import rain1Img from "../img/weather-icons/rain.png";
+import rain2Img from "../img/weather-icons/rain2.png";
+import rain3Img from "../img/weather-icons/rain3.png";
+import rain4Img from "../img/weather-icons/rain4.png";
+import sunCloudImg from "../img/weather-icons/sun-cloud.png";
+import thunderRainImg from "../img/weather-icons/thunder-rain.png";
+import thunderImg from "../img/weather-icons/thunder.png";
+import umbrellaImg from "../img/weather-icons/umbrella.png";
+import windyImg from "../img/weather-icons/windy.png";
+import snowStar1Img from "../img/weather-icons/snow-star1.png";
+import snowStar2Img from "../img/weather-icons/snow-star2.png";
+import snowStar3Img from "../img/weather-icons/snow-star3.png";
+import sunCloudRainImg from "../img/weather-icons/sun-cloud-rain.png";
+import dropImg from "../img/drop.png";
 
 const Hours3 = ({ currentWeather }) => {
   const [rainMode, setRainMode] = useState(true);
@@ -31,8 +53,52 @@ const Hours3 = ({ currentWeather }) => {
       setRainMode(false);
     }
   };
+  let date = new Date();
+  let hour2 = date.getHours();
+  let hour = 22;
+  const getTime = (time) => {
+    switch (time) {
+      case 0:
+        return 0;
+      case 1:
+        return 1;
+      case 2:
+        return 1;
+      case 3:
+        return 1;
+      case 4:
+        return 0.9;
+      case 5:
+        return 0.8;
+      case 6:
+        return 0.8;
+      case 7:
+        return 0.7;
+      case 8:
+        return 0.7;
+      case 9:
+        return 0.6;
+      case 10:
+        return 0.3;
+      case 11:
+        return 0.3;
+      case 12:
+        return 0.4;
+      case 13:
+        return 0.3;
+      case 14:
+        return 0.2;
+      default:
+        return 0;
+    }
+  };
+
+  let duration = hour * 0.025;
+
   const hour3AniCon = {
-    show: { transition: { delayChildren: 1, staggerChildren: 0.05 } },
+    show: {
+      transition: { delayChildren: getTime(hour2), staggerChildren: 0.06 },
+    },
   };
   const hour3Child = {
     hidden: {
@@ -43,6 +109,66 @@ const Hours3 = ({ currentWeather }) => {
       opacity: 1,
       scale: 1,
     },
+  };
+  const getImage = (code) => {
+    switch (code) {
+      case "//cdn.weatherapi.com/weather/64x64/night/113.png":
+        return moonStarImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/113.png":
+        return sunImg;
+      case "//cdn.weatherapi.com/weather/64x64/night/116.png":
+        return cloudMoonImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/116.png":
+        return sunCloudImg;
+      case "//cdn.weatherapi.com/weather/64x64/night/122.png":
+        return cloudsImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/122.png":
+        return sunCloudImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/266.png":
+        return rain3Img;
+      case "//cdn.weatherapi.com/weather/64x64/day/266.png":
+        return sunCloudImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/176.png":
+        return sunCloudRainImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/119.png":
+        return cloudsImg;
+      case "//cdn.weatherapi.com/weather/64x64/night/119.png":
+        return cloudMoonImg;
+      case "//cdn.weatherapi.com/weather/64x64/night/143.png":
+        return fogImg;
+      case "//cdn.weatherapi.com/weather/64x64/night/260.png":
+        return fogImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/260.png":
+        return fogImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/143.png":
+        return fogImg;
+      case "//cdn.weatherapi.com/weather/64x64/day/326.png":
+        return snowStar1Img;
+      case "//cdn.weatherapi.com/weather/64x64/night/326.png":
+        return snowStar1Img;
+      case "//cdn.weatherapi.com/weather/64x64/night/332.png":
+        return snowStar2Img;
+      case "//cdn.weatherapi.com/weather/64x64/night/338.png":
+        return snowStar3Img;
+      case "//cdn.weatherapi.com/weather/64x64/day/338.png":
+        return snowStar3Img;
+      case "//cdn.weatherapi.com/weather/64x64/night/329.png":
+        return snowStar2Img;
+      case "//cdn.weatherapi.com/weather/64x64/day/329.png":
+        return snowStar2Img;
+      case "//cdn.weatherapi.com/weather/64x64/day/332.png":
+        return snowStar2Img;
+      case "//cdn.weatherapi.com/weather/64x64/night/302.png":
+        return rain2Img;
+      case "//cdn.weatherapi.com/weather/64x64/day/302.png":
+        return rain2Img;
+      case "//cdn.weatherapi.com/weather/64x64/night/311.png":
+        return rain2Img;
+      case "//cdn.weatherapi.com/weather/64x64/night/323.png":
+        return snowStar1Img;
+      default:
+        return umbrellaImg;
+    }
   };
   return (
     <>
@@ -100,10 +226,14 @@ const Hours3 = ({ currentWeather }) => {
                     <div
                       className="weather-scale"
                       style={{
-                        top: `${Math.round(maxC - currentC) * 8}%`,
+                        top: `${Math.round(maxC - currentC) * 7}%`,
                       }}
                     >
-                      <img width="25" src={forecast.condition.icon} alt="" />
+                      <img
+                        width="22"
+                        src={getImage(forecast.condition.icon)}
+                        alt=""
+                      />
                       <p>{Math.round(forecast.temp_c)}</p>
                     </div>
                   </div>
@@ -131,11 +261,10 @@ const Hours3 = ({ currentWeather }) => {
               </motion.div>
             );
           })}
-          <div className="next-day"></div>
+          {/*   <div className="next-day"></div> */}
           {currentWeather.forecast.forecastday[1].hour.map((forecast) => {
             let maxC = currentWeather.forecast.forecastday[1].day.maxtemp_c;
             let currentC = forecast.temp_c;
-
             return (
               <motion.div
                 className="hour"
@@ -150,10 +279,14 @@ const Hours3 = ({ currentWeather }) => {
                     <div
                       className="weather-scale"
                       style={{
-                        top: `${Math.round(maxC - currentC) * 8}%`,
+                        top: `${Math.round(maxC - currentC) * 7}%`,
                       }}
                     >
-                      <img width="25" src={forecast.condition.icon} alt="" />
+                      <img
+                        width="22"
+                        src={getImage(forecast.condition.icon)}
+                        alt=""
+                      />
                       <p>{Math.round(forecast.temp_c)}</p>
                     </div>
                   </div>
@@ -181,7 +314,7 @@ const Hours3 = ({ currentWeather }) => {
               </motion.div>
             );
           })}
-          <div className="next-day"></div>
+          {/*           <div className="next-day"></div> */}
           {currentWeather.forecast.forecastday[2].hour.map((forecast) => {
             let maxC = currentWeather.forecast.forecastday[2].day.maxtemp_c;
             let currentC = forecast.temp_c;
@@ -200,10 +333,14 @@ const Hours3 = ({ currentWeather }) => {
                     <div
                       className="weather-scale"
                       style={{
-                        top: `${Math.round(maxC - currentC) * 8}%`,
+                        top: `${Math.round(maxC - currentC) * 7}%`,
                       }}
                     >
-                      <img width="25" src={forecast.condition.icon} alt="" />
+                      <img
+                        width="22"
+                        src={getImage(forecast.condition.icon)}
+                        alt=""
+                      />
                       <p>{Math.round(forecast.temp_c)}</p>
                     </div>
                   </div>

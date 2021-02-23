@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 //Images
-import sunCloud from "../img/sun-cloud.png";
 
 import cloud1img from "../img/cloud1.png";
 import cloud2img from "../img/cloud2.png";

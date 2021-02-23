@@ -67,24 +67,26 @@ const WeatherAnimations = ({
 }) => {
   useEffect(() => {
     if (currentWeather) {
-      if (currentWeather.current.wind_kph > 20) {
-        setWind(true);
-      }
-      if (currentWeather.current.wind_kph < 20) {
-        setWind(false);
-      }
-      if (currentWeather.forecast.forecastday[0].hour[0].will_it_snow > 0) {
-        setSnow(true);
-      }
-      if (currentWeather.forecast.forecastday[0].hour[0].will_it_snow <= 0) {
-        setSnow(false);
-      }
-      if (currentWeather.forecast.forecastday[0].hour[0].will_it_rain > 0) {
-        setRain(true);
-      }
-      if (currentWeather.forecast.forecastday[0].hour[0].will_it_rain <= 0) {
-        setRain(false);
-      }
+      setTimeout(() => {
+        if (currentWeather.current.wind_kph > 20) {
+          setWind(true);
+        }
+        if (currentWeather.current.wind_kph < 20) {
+          setWind(false);
+        }
+        if (currentWeather.forecast.forecastday[0].hour[0].will_it_snow > 0) {
+          setSnow(true);
+        }
+        if (currentWeather.forecast.forecastday[0].hour[0].will_it_snow <= 0) {
+          setSnow(false);
+        }
+        if (currentWeather.forecast.forecastday[0].hour[0].will_it_rain > 0) {
+          setRain(true);
+        }
+        if (currentWeather.forecast.forecastday[0].hour[0].will_it_rain <= 0) {
+          setRain(false);
+        }
+      }, 2000);
     }
   }, [currentWeather]);
 
